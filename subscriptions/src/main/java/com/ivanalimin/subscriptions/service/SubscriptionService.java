@@ -17,15 +17,14 @@ public class SubscriptionService {
 
     private final SubscriptionRepository repository;
 
-    public Subscription subscribe(String subscriber, String author) {
-        Subscription subscription = new Subscription(subscriber, author);
+    public Subscription subscribe(Subscription subscription) {
         return repository.save(subscription);
     }
 
-    public void unsubscribe(String subscriber, String author) {
-        List<Subscription> subscriptions = repository.findAllByAuthor(author);
+    public void unsubscribe(Subscription subscription) {
+        List<Subscription> subscriptions = repository.findAllByAuthor(subscription.getAuthor());
         subscriptions.stream()
-                .filter(subscription -> subscription.getSubscriber().equals(subscriber))
+                .filter(sub -> sub.getSubscriber().equals(subscription.getSubscriber()))
                 .findFirst()
                 .ifPresent(repository::delete);
     }

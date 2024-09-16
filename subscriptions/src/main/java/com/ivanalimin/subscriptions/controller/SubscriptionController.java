@@ -15,14 +15,14 @@ public class SubscriptionController {
     private final SubscriptionService subscriptionService;
 
     @PostMapping("/subscribe")
-    public ResponseEntity<Subscription> subscribe(@RequestParam String subscriber, @RequestParam String author) {
-        Subscription subscription = subscriptionService.subscribe(subscriber, author);
-        return new ResponseEntity<>(subscription, HttpStatus.CREATED);
+    public ResponseEntity<Subscription> subscribe(@RequestBody Subscription subscription) {
+        Subscription createdSubscription = subscriptionService.subscribe(subscription);
+        return new ResponseEntity<>(createdSubscription, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/unsubscribe")
-    public ResponseEntity<Void> unsubscribe(@RequestParam String subscriber, @RequestParam String author) {
-        subscriptionService.unsubscribe(subscriber, author);
+    public ResponseEntity<Void> unsubscribe(@RequestBody Subscription subscription) {
+        subscriptionService.unsubscribe(subscription);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

@@ -1,4 +1,4 @@
-package com.ivanalimin.subscriptions.config;
+package com.ivanalimin.notifications.config;
 
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -9,11 +9,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfig {
-
-    @Bean
-    public Queue notificationQueue() {
-        return new Queue("notifications_subscribers");
-    }
 
     @Bean
     public Jackson2JsonMessageConverter jsonMessageConverter() {

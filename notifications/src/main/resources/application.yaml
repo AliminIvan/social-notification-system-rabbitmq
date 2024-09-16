@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: notifications
+  datasource:
+    url: jdbc:h2:mem:notificationsdb;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: user
+    password: password
+server:
+  port: 8082

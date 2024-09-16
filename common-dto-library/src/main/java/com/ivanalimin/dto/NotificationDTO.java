@@ -18,6 +18,11 @@ public class NotificationDTO {
         this.sentAt = LocalDateTime.now();
     }
 
+    public NotificationDTO(String message) {
+        this.message = message;
+        this.sentAt = LocalDateTime.now();
+    }
+
     public String getRecipient() {
         return recipient;
     }
